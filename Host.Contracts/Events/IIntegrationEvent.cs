@@ -1,4 +1,4 @@
-﻿namespace Host.Contracts.Events {
+﻿namespace Hosted.Contracts.Events {
     public interface IIntegrationEvent {
     }
 }

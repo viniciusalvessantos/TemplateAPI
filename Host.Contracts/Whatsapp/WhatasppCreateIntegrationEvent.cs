@@ -1,7 +1,7 @@
-﻿using Host.Contracts.Events;
+﻿using Hosted.Contracts.Events;
 using MediatR;
 
-namespace Host.Contracts.Whatsapp {
+namespace Hosted.Contracts.Whatsapp {
     public class WhatasppCreateIntegrationEvent : INotification, IIntegrationEvent {
         public WhatasppCreateIntegrationEvent() {
 

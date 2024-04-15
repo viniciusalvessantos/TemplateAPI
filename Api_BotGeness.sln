@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host", "Host\Host.csproj", "{D3219468-5B75-43B9-A387-372409E9ED13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted", "Host\Hosted.csproj", "{D3219468-5B75-43B9-A387-372409E9ED13}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modulos", "Modulos", "{CC888D6E-F71D-4ADB-92C0-605A6491778D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Contracts", "Host.Contracts\Host.Contracts.csproj", "{9A461ABB-BDB1-403C-9C8C-D9D8C2A6C447}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted.Contracts", "Host.Contracts\Hosted.Contracts.csproj", "{9A461ABB-BDB1-403C-9C8C-D9D8C2A6C447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Exceptions.Abstraction", "Host.Exceptions.Abstraction\Host.Exceptions.Abstraction.csproj", "{A77A77A2-F506-43FE-9996-D0A7F8279160}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted.Exceptions.Abstraction", "Host.Exceptions.Abstraction\Hosted.Exceptions.Abstraction.csproj", "{A77A77A2-F506-43FE-9996-D0A7F8279160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Infrastructure", "Host.Infrastructure\Host.Infrastructure.csproj", "{7127DFEA-ACC8-4DCF-A82F-8255E23E2C56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted.Infrastructure", "Host.Infrastructure\Hosted.Infrastructure.csproj", "{7127DFEA-ACC8-4DCF-A82F-8255E23E2C56}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Usuarios", "Usuarios", "{60EC0529-18EB-4883-9E43-D317381E068F}"
 EndProject
@@ -24,6 +24,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Whatsapp", "Whatsapp", "{3A77C80C-E57E-4232-983F-14F23B590CAC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ifood", "Ifood", "{0DA741A4-D74B-413A-B292-13381787835E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OutBox", "OutBox", "{73FE8ACE-C049-4DE1-9969-E3F8508499C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hosted.Outbox", "Host.Outbox\Hosted.Outbox.csproj", "{6E851B87-04B6-4AC0-843B-020995790D4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hosted.OutBox.WorkerProcess", "Host.OutBox.WorkerProcess\Hosted.OutBox.WorkerProcess.csproj", "{38F9A935-EF30-4FD6-8DE9-7E8C992DCB3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +53,14 @@ Global
 		{7127DFEA-ACC8-4DCF-A82F-8255E23E2C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7127DFEA-ACC8-4DCF-A82F-8255E23E2C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7127DFEA-ACC8-4DCF-A82F-8255E23E2C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E851B87-04B6-4AC0-843B-020995790D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E851B87-04B6-4AC0-843B-020995790D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E851B87-04B6-4AC0-843B-020995790D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E851B87-04B6-4AC0-843B-020995790D4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38F9A935-EF30-4FD6-8DE9-7E8C992DCB3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38F9A935-EF30-4FD6-8DE9-7E8C992DCB3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38F9A935-EF30-4FD6-8DE9-7E8C992DCB3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38F9A935-EF30-4FD6-8DE9-7E8C992DCB3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +72,9 @@ Global
 		{22252C94-8595-4854-933F-2F9B17DF0FD2} = {CC888D6E-F71D-4ADB-92C0-605A6491778D}
 		{3A77C80C-E57E-4232-983F-14F23B590CAC} = {CC888D6E-F71D-4ADB-92C0-605A6491778D}
 		{0DA741A4-D74B-413A-B292-13381787835E} = {CC888D6E-F71D-4ADB-92C0-605A6491778D}
+		{73FE8ACE-C049-4DE1-9969-E3F8508499C0} = {CC888D6E-F71D-4ADB-92C0-605A6491778D}
+		{6E851B87-04B6-4AC0-843B-020995790D4E} = {73FE8ACE-C049-4DE1-9969-E3F8508499C0}
+		{38F9A935-EF30-4FD6-8DE9-7E8C992DCB3B} = {73FE8ACE-C049-4DE1-9969-E3F8508499C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88A8C28F-4AE2-45E3-9148-F6A197207C80}

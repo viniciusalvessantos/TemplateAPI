@@ -1,6 +1,6 @@
-﻿using Host.Contracts.Events;
+﻿using Hosted.Contracts.Events;
 
-namespace Host.Infrastructure {
+namespace Hosted.Infrastructure {
     public class InMemoryEventBus : IEventBus {
         public Task Publish(IIntegrationEvent @event) {
             throw new NotImplementedException();

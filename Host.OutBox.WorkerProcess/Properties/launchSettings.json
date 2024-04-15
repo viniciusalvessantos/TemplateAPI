@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Host.OutBox.WorkerProcess": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
