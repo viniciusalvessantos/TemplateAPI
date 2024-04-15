@@ -1,5 +1,5 @@
-﻿using Host.Contracts.Events;
-using Host.Outbox.Persistence;
+﻿using Hosted.Contracts.Events;
+using Hosted.Outbox.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
