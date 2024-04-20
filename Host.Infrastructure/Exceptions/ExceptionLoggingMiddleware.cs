@@ -1,14 +1,19 @@
 ﻿using Hosted.Exceptions.Abstraction;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
+
 using Serilog;
 using Serilog.Events;
 using System.Net;
+using System.Text.Json;
 
 namespace Hosted.Infrastructure.Exceptions {
     public class ExceptionLoggingMiddleware {
         private readonly RequestDelegate _next;
         private const string ContentType = "application/json";
+        private static readonly JsonSerializerOptions DefaultWebOptions = new() {
+            PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        };
 
         public ExceptionLoggingMiddleware(RequestDelegate next) {
             _next = next;
@@ -25,22 +30,28 @@ namespace Hosted.Infrastructure.Exceptions {
                 httpContext.Response.StatusCode = GetHttpStatusCode(ex);
 
                 var exceptionMessage = FormatErrorMessage(ex);
-                await httpContext.Response.WriteAsync(exceptionMessage);
+                var message = JsonSerializer.Serialize(exceptionMessage, DefaultWebOptions);
+
+                await httpContext.Response.WriteAsync(message);
             }
         }
 
         private string FormatErrorMessage(Exception ex) =>
-            ex switch {
-                DomainException domainException => JsonConvert.SerializeObject(
-                    new ErroMessage(domainException.ExceptionCode, domainException.Message)),
-                ValidationException validationException => JsonConvert.SerializeObject(new ValidationErrorMessage(validationException.ExceptionCode, validationException.Message,
-                    validationException.ValidationMessages)),
-                AppException appException => JsonConvert.SerializeObject(new ErroMessage(appException.ExceptionCode,
-                    appException.Message)),
-                _ => JsonConvert.SerializeObject(new ErroMessage(-1, ex.Message)),
-            };
+           ex switch {
+               DomainException domainException =>
+                   new ErroResponse(domainException.ExceptionCode, domainException.Message),
+               ModularMonolithValidationException validationException => new ErroResponse(
+                   validationException.ExceptionCode,
+                   validationException.Message,
+                   validationException.ValidationMessages),
+               ValidationException validationException => new ErroResponse(validationException.Errors,
+                   validationException.Message, -1),
+               AppException appException => new ErroResponse(appException.ExceptionCode,
+                   appException.Message),
+               _ => new ErroResponse(-1, ex.Message),
+           };
 
-        private int GetHttpStatusCode(Exception ex)
+        private static int GetHttpStatusCode(Exception ex)
             => ex switch {
                 DomainException _ => (int)HttpStatusCode.BadRequest,
                 AppException _ => (int)HttpStatusCode.BadRequest,
@@ -48,7 +59,7 @@ namespace Hosted.Infrastructure.Exceptions {
             };
 
 
-        private LogEventLevel GetLoggerLevel(Exception ex)
+        private static LogEventLevel GetLoggerLevel(Exception ex)
             => ex switch {
                 DomainException _ => LogEventLevel.Information,
                 AppException _ => LogEventLevel.Information,

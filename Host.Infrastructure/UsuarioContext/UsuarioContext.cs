@@ -10,7 +10,9 @@ namespace Hosted.Infrastructure.UsuarioContext {
         public string UserId {
             get {
                 if (_contextAccessor != null) {
-                    return _contextAccessor.HttpContext.User.Claims.First(x => x.Type == "UserId").Value;
+                    if (_contextAccessor.HttpContext != null) {
+                        return _contextAccessor.HttpContext.User.Claims.First(x => x.Type == "UserId").Value;
+                    }
                 }
                 return string.Empty;
             }

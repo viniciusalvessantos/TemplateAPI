@@ -23,29 +23,35 @@ namespace Hosted.OutBox.WorkerProcess {
             while (!stoppingToken.IsCancellationRequested) {
                 using var scope = _serviceProvider.CreateScope();
 
-                var services = GetServices(scope);
-                var messages = await services.dbContext.OutBoxMessages.Where(x => x.ExecutedOn == null)
-                    .ToListAsync(stoppingToken);
+                try {
+                    var services = GetServices(scope);
+                    var messages = await services.dbContext.OutBoxMessages.Where(x => x.ExecutedOn == null)
+                        .ToListAsync(stoppingToken);
 
-                foreach (var outBoxMessage in messages) {
-                    try {
-                        var eventType = Assembly.Load(typeof(IEventBus).Assembly.GetName()).GetType(outBoxMessage.Type);
+                    foreach (var outBoxMessage in messages) {
+                        try {
+                            var eventType = Assembly.Load(typeof(IEventBus).Assembly.GetName())
+                                .GetType(outBoxMessage.Type);
 
-                        var @event = JsonSerializer.Deserialize(outBoxMessage.Message, eventType!);
+                            var @event = JsonSerializer.Deserialize(outBoxMessage.Message, eventType);
 
-                        await services.mediator.Publish(@event!, CancellationToken.None);
+                            await services.mediator.Publish(@event, CancellationToken.None);
 
-                        outBoxMessage.ExecutedOn = DateTime.UtcNow;
-                        await services.dbContext.SaveChangesAsync(CancellationToken.None);
+                            outBoxMessage.ExecutedOn = DateTime.UtcNow;
+                            await services.dbContext.SaveChangesAsync(CancellationToken.None);
 
-                        _logger.LogInformation("[Outbox] Message handled: {MessageId}", outBoxMessage.Id);
+                            _logger.LogInformation("[Outbox] Message handled: {MessageId}", outBoxMessage.Id);
 
-                    } catch (Exception ex) {
-                        _logger.LogError(ex, "[Outbox] Exception when handling message. Message body: {message}", outBoxMessage.Message);
+                        } catch (Exception ex) {
+                            _logger.LogError(ex, "[Outbox] Exception when handling message. Message body: {message}",
+                                outBoxMessage.Message);
+                        }
                     }
-                }
 
-                await Task.Delay(1000, stoppingToken);
+                    await Task.Delay(1000, stoppingToken);
+                } catch (Exception ex) {
+                    _logger.LogError(ex, "Unhandled exception");
+                }
             }
         }
         private (IMediator mediator, OutboxDbContext dbContext) GetServices(IServiceScope scope) {

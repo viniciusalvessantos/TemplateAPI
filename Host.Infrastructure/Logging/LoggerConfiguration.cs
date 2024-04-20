@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 
-namespace Hosted.Infrastructure.Exceptions {
+namespace Hosted.Infrastructure.Logging {
     public static class LoggerConfiguration {
         public static IHostBuilder UseLogger(this IHostBuilder hostBuilder) => hostBuilder.UseSerilog(
             (context, configuration) => {
@@ -22,8 +25,8 @@ namespace Hosted.Infrastructure.Exceptions {
                     configuration.WriteTo.Console();
 
                 if (enableSeq) {
-                    var apiKey = context.Configuration["Logger:Seq:ApiKey"];
-                    var seqUrl = context.Configuration["Logger:Seq:URL"];
+                    var apiKey = context.Configuration["Logger:Seq:ApiKey"]!;
+                    var seqUrl = context.Configuration["Logger:Seq:URL"]!;
                     configuration.WriteTo.Seq(seqUrl, apiKey: apiKey);
                 }
 
