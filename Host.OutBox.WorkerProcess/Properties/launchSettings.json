@@ -1,7 +1,10 @@
 {
   "profiles": {
-    "Host.OutBox.WorkerProcess": {
-      "commandName": "Project"
+    "Hosted.OutBox.WorkerProcess": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
     },
     "Container (Dockerfile)": {
       "commandName": "Docker"
