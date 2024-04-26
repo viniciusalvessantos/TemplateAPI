@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Hosted.Usuarios.Infrastructure\Hosted.Usuarios.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configs\" />
-  </ItemGroup>
-
 </Project>

@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted.Usuarios.Contract", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted.Domain", "Hosted.Domain\Hosted.Domain.csproj", "{DE59C2EA-C074-49E2-86F3-F0DDA88E1F1C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted.Usuarios.Test", "Hosted.Usuarios.Test\Hosted.Usuarios.Test.csproj", "{3B498630-80DB-4D5D-A9A2-261082F0341D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hosted.Usuarios.Test", "Hosted.Usuarios.Test\Hosted.Usuarios.Test.csproj", "{3B498630-80DB-4D5D-A9A2-261082F0341D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
