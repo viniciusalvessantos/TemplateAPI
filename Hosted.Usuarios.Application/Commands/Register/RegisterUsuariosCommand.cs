@@ -1,7 +1,8 @@
-﻿using MediatR;
+﻿using Hosted.Usuarios.Application.Responses.RegisterResponser;
+using MediatR;
 
 namespace Hosted.Usuarios.Application.Commands.Register {
-    public class RegisterUsuariosCommand : IRequest {
+    public class RegisterUsuariosCommand : IRequest<RegisterResponser> {
         public RegisterUsuariosCommand(string userName, string password, string name, string surname) {
             UserName = userName;
             Password = password;

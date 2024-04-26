@@ -1,4 +1,6 @@
-﻿using Hosted.Usuarios.Application.Queries.Login;
+﻿using Hosted.Infrastructure.Exceptions;
+using Hosted.Usuarios.Application.Commands.Register;
+using Hosted.Usuarios.Application.Queries.Login;
 using Hosted.Usuarios.Application.Responses.LoginResponses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -29,14 +31,14 @@ namespace Hosted.Controllers {
         /// </summary>
         /// <param name="request">Login request parameter</param>
         /// <returns>JWT Token</returns>
-        //[HttpPost]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(ErroResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //[HttpPost]
-        //[Route("register")]
-        //public async Task<ActionResult> Register(RegisterUsuariosCommand request) =>
-        //    Ok(await _mediator.Send(new RegisterUsuariosCommand(request.UserName, request.Password, request.Name,
-        //        request.Password)));
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpPost]
+        [Route("register")]
+        public async Task<ActionResult> Register(RegisterUsuariosCommand request) =>
+            Ok(await _mediator.Send(new RegisterUsuariosCommand(request.UserName, request.Password, request.Name,
+                request.Password)));
     }
 }
