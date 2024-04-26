@@ -1,5 +1,4 @@
 ﻿using Microsoft.OpenApi.Models;
-using System.Reflection;
 
 namespace Hosted.Configs {
     public static class SwaggerConfiguration {
@@ -26,7 +25,7 @@ namespace Hosted.Configs {
                 }
            });
 
-           c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+           // c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
 
        });
 

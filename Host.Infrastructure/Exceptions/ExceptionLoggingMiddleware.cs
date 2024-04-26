@@ -1,4 +1,5 @@
-﻿using Hosted.Exceptions.Abstraction;
+﻿using FluentValidation;
+using Hosted.Exceptions.Abstraction;
 using Microsoft.AspNetCore.Http;
 
 using Serilog;
@@ -36,20 +37,20 @@ namespace Hosted.Infrastructure.Exceptions {
             }
         }
 
-        private string FormatErrorMessage(Exception ex) =>
-           ex switch {
-               DomainException domainException =>
-                   new ErroResponse(domainException.ExceptionCode, domainException.Message),
-               ModularMonolithValidationException validationException => new ErroResponse(
-                   validationException.ExceptionCode,
-                   validationException.Message,
-                   validationException.ValidationMessages),
-               ValidationException validationException => new ErroResponse(validationException.Errors,
-                   validationException.Message, -1),
-               AppException appException => new ErroResponse(appException.ExceptionCode,
-                   appException.Message),
-               _ => new ErroResponse(-1, ex.Message),
-           };
+        private static ErroResponse FormatErrorMessage(Exception ex) =>
+             ex switch {
+                 DomainException domainException =>
+                     new ErroResponse(domainException.ExceptionCode, domainException.Message),
+                 ModularMonolithValidationException validationException => new ErroResponse(
+                     validationException.ExceptionCode,
+                     validationException.Message,
+                     validationException.ValidationMessages),
+                 ValidationException validationException => new ErroResponse(validationException.Errors,
+                     validationException.Message, -1),
+                 AppException appException => new ErroResponse(appException.ExceptionCode,
+                     appException.Message),
+                 _ => new ErroResponse(-1, ex.Message),
+             };
 
         private static int GetHttpStatusCode(Exception ex)
             => ex switch {
