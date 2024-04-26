@@ -7,16 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Queries\Login\" />
-    <Folder Include="Responses\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MediatR" Version="12.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Host.Contracts\Hosted.Contracts.csproj" />
+    <ProjectReference Include="..\Hosted.Usuarios.Contract\Hosted.Usuarios.Contract.csproj" />
     <ProjectReference Include="..\Hosted.Usuarios.Domain\Hosted.Usuarios.Domain.csproj" />
   </ItemGroup>
 

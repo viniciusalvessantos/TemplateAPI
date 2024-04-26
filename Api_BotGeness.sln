@@ -39,7 +39,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted.Usuarios.Domain", "H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted.Usuarios.Contract", "Hosted.Usuarios.Contract\Hosted.Usuarios.Contract.csproj", "{68BDC13E-1735-4842-B286-C7BC76B2DACE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hosted.Domain", "Hosted.Domain\Hosted.Domain.csproj", "{DE59C2EA-C074-49E2-86F3-F0DDA88E1F1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted.Domain", "Hosted.Domain\Hosted.Domain.csproj", "{DE59C2EA-C074-49E2-86F3-F0DDA88E1F1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hosted.Usuarios.Test", "Hosted.Usuarios.Test\Hosted.Usuarios.Test.csproj", "{3B498630-80DB-4D5D-A9A2-261082F0341D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,10 @@ Global
 		{DE59C2EA-C074-49E2-86F3-F0DDA88E1F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE59C2EA-C074-49E2-86F3-F0DDA88E1F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE59C2EA-C074-49E2-86F3-F0DDA88E1F1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B498630-80DB-4D5D-A9A2-261082F0341D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B498630-80DB-4D5D-A9A2-261082F0341D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B498630-80DB-4D5D-A9A2-261082F0341D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B498630-80DB-4D5D-A9A2-261082F0341D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +115,7 @@ Global
 		{1EC35FAD-6563-4F4C-B89D-553D3B2BFFF8} = {60EC0529-18EB-4883-9E43-D317381E068F}
 		{930D9A3D-3394-4C93-BBAA-B1CE630E8333} = {60EC0529-18EB-4883-9E43-D317381E068F}
 		{68BDC13E-1735-4842-B286-C7BC76B2DACE} = {60EC0529-18EB-4883-9E43-D317381E068F}
+		{3B498630-80DB-4D5D-A9A2-261082F0341D} = {60EC0529-18EB-4883-9E43-D317381E068F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88A8C28F-4AE2-45E3-9148-F6A197207C80}

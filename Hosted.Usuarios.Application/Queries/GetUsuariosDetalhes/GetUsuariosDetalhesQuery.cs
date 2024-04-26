@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hosted.Usuarios.Contract;
+using MediatR;
 
 namespace Hosted.Usuarios.Application.Queries.GetUsuariosDetalhes {
-    internal class GetUsuariosDetalhesQuery {
+    public class GetUsuariosDetalhesQuery : IRequest<UsuarioContract> {
+        public GetUsuariosDetalhesQuery(string userId) {
+            UserId = userId;
+        }
+        public string UserId { get; }
     }
 }

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hosted.Usuarios.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hosted.Usuarios.Infrastructure {
-    internal class UsuariosDbContext {
+    public class UsuariosDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string> {
+        public UsuariosDbContext(DbContextOptions<UsuariosDbContext> options) : base(options) {
+        }
     }
 }
