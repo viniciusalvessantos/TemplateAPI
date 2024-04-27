@@ -24,21 +24,19 @@ namespace Hosted.Controllers {
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Route("login")]
         public async Task<ActionResult<LoginResponse>> LogIn(LoginQuery request)
-            => Ok(await _mediator.Send(new LoginQuery(request.UserName, request.Password)));
+            => Ok(await _mediator.Send(request));
 
         /// <summary>
         /// Register new user
         /// </summary>
         /// <param name="request">Login request parameter</param>
         /// <returns>JWT Token</returns>
-        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
         [Route("register")]
         public async Task<ActionResult> Register(RegisterUsuariosCommand request) =>
-            Ok(await _mediator.Send(new RegisterUsuariosCommand(request.UserName, request.Password, request.Name,
-                request.Password)));
+            Ok(await _mediator.Send(request));
     }
 }
