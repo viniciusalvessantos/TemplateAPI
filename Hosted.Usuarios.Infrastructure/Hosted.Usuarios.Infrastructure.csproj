@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Host.Outbox\Hosted.Outbox.csproj" />
     <ProjectReference Include="..\Hosted.Usuarios.Application\Hosted.Usuarios.Application.csproj" />
     <ProjectReference Include="..\Hosted.Usuarios.Contract\Hosted.Usuarios.Contract.csproj" />
     <ProjectReference Include="..\Hosted.Usuarios.Domain\Hosted.Usuarios.Domain.csproj" />
