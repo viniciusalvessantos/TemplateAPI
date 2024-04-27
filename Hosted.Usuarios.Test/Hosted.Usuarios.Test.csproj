@@ -27,8 +27,5 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Get Usuarios Detalhes\" />
-  </ItemGroup>
 
 </Project>

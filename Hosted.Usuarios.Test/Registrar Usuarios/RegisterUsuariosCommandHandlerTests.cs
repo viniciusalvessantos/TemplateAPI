@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Moq;
 
 namespace Hosted.Usuarios.Test.Registrar_Usuarios {
+    [TestFixture]
     public class RegisterUsuariosCommandHandlerTests {
         private Mock<UserManager<ApplicationUser>> _userManagerMock;
         private RegisterUsuariosCommandHandler _handler;
