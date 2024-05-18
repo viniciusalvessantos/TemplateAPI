@@ -14,10 +14,11 @@ namespace Hosted.Controllers {
             _mediator = mediator;
         }
         /// <summary>
-        /// Login using username and password
+        /// Autentica um usuário usando seu nome de usuário e senha.
         /// </summary>
-        /// <param name="request">Login request parameter</param>
-        /// <returns>JWT Token</returns>
+        /// <param name="request">A requisição de login contendo o nome de usuário e a senha.</param>
+        /// <returns>Um Token JWT (JSON Web Token) se a autenticação for bem-sucedida.</returns>
+
         [HttpPost]
         [ProducesResponseType(typeof(LoginResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
