@@ -33,7 +33,7 @@ namespace Hosted.Usuarios.Infrastructure.Startup {
                 .AddRefitClient<IUsuariosAPI>()
                 .ConfigureHttpClient(c => {
                     var userModuleUrl = configuration["Modules:UsersModule:Url"];
-                    c.BaseAddress = new Uri(userModuleUrl);
+                    c.BaseAddress = new Uri(userModuleUrl!);
                 });
 
             services.AddScoped<IUsuariosService, GetUsuariosDetalhesQueryHandler>();
@@ -63,7 +63,7 @@ namespace Hosted.Usuarios.Infrastructure.Startup {
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(jwt => {
-                var key = Encoding.ASCII.GetBytes(configuration["Jwt:Secret"]);
+                var key = Encoding.ASCII.GetBytes(configuration["Jwt:Secret"]!);
                 var issuer = configuration["Jwt:Issuer"];
                 jwt.SaveToken = true;
                 jwt.TokenValidationParameters = new TokenValidationParameters {
@@ -71,7 +71,7 @@ namespace Hosted.Usuarios.Infrastructure.Startup {
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = true,
                     ValidIssuer = issuer,
-                    ValidAudiences = new List<string>() { issuer },
+                    ValidAudiences = new List<string>() { issuer! },
                     ValidateAudience = true,
                     RequireExpirationTime = false,
                     ValidateLifetime = true

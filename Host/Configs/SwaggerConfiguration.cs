@@ -20,6 +20,7 @@ namespace Hosted.Configs {
                Type = SecuritySchemeType.ApiKey,
                Description = "Optional Tenant ID"
            });
+
            // Define um valor padrão para o cabeçalho X - Tenant - ID
            c.OperationFilter<AddTenantIdHeaderParameter>();
            c.AddSecurityRequirement(new OpenApiSecurityRequirement {

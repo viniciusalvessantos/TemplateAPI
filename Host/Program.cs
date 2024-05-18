@@ -14,7 +14,6 @@ builder.Services.AddControllers().AddJsonOptions(options => {
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
 
 builder.Services.AddoutBoxModule(builder.Configuration).AddUserModule(builder.Configuration);
-
 builder.Services.AddApplicationCoreServices();
 builder.Services.AddApplicationSwagger();
 

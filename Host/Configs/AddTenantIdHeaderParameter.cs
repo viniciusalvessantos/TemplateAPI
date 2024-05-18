@@ -13,7 +13,7 @@ namespace Hosted.Configs {
                 Name = "X-Tenant-ID",
                 In = ParameterLocation.Header,
                 Description = "Optional Tenant ID",
-                Required = false,
+                Required = true,
                 Schema = new OpenApiSchema {
                     Type = "string",
                     Default = new OpenApiString("0") // Valor padrão
