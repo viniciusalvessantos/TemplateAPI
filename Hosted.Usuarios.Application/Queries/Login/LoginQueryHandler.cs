@@ -21,9 +21,7 @@ namespace Hosted.Usuarios.Application.Queries.Login {
             if (user is null || !await _userManager.CheckPasswordAsync(user, request.Password)) {
                 throw new LoginException();
             }
-            if (!user.Tenant.IsActive) {
-                throw new LoginException();
-            }
+
 
             var claims = new List<Claim>
             {
@@ -33,6 +31,10 @@ namespace Hosted.Usuarios.Application.Queries.Login {
             var roles = await _userManager.GetRolesAsync(user);
             foreach (var role in roles) {
                 claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+            if (user.Tenant.IsActive && user.Tenant.IsAssinaturaActive) {
+                // Aqui vou adicionar os modulos para o usuarios
+                throw new LoginException();
             }
 
             return new LoginResponse(_jwtService.GenerateJwt(claims));

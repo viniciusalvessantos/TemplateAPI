@@ -40,6 +40,7 @@ app.UseSwagger();
 // specifying the Swagger JSON endpoint.
 app.UseSwaggerUI(c => {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Modular Monolith API");
+    //c.RoutePrefix = string.Empty;
 });
 
 app.UseRouting();

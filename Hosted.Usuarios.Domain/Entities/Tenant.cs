@@ -1,4 +1,5 @@
 ﻿using Hosted.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hosted.Usuarios.Domain.Entities {
     public class Tenant : BaseEntity {
@@ -11,9 +12,12 @@ namespace Hosted.Usuarios.Domain.Entities {
             Users = users;
         }
 
+        [MaxLength(60)]
         public string Name { get; } = string.Empty;
+        public bool IsAssinaturaActive { get; set; }
         public bool IsActive { get; }
 
+        [MaxLength(10)]
         public virtual ICollection<ApplicationUser> Users { get; } // Propriedade de navegação
     }
 }
