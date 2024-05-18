@@ -21,13 +21,19 @@ namespace Hosted.Usuarios.Application.Queries.Login {
             if (user is null || !await _userManager.CheckPasswordAsync(user, request.Password)) {
                 throw new LoginException();
             }
+            if (!user.Tenant.IsActive) {
+                throw new LoginException();
+            }
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Role,"User"),
-                new Claim("UserId",user.Id)
+                new Claim(ClaimTypes.Name, user.UserName!),
+                new Claim("X-Tenant-ID",user.TenantId.ToString()!)
             };
+            var roles = await _userManager.GetRolesAsync(user);
+            foreach (var role in roles) {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             return new LoginResponse(_jwtService.GenerateJwt(claims));
         }

@@ -25,7 +25,8 @@ namespace Hosted.Usuarios.Test.Registrar_Usuarios {
                 "testUser",
                 "Test",
                 "User",
-                "StrongPassword123!"
+                "StrongPassword123!",
+                Guid.NewGuid()
             );
             var identityResult = IdentityResult.Success;
 
@@ -47,7 +48,8 @@ namespace Hosted.Usuarios.Test.Registrar_Usuarios {
                "testUser",
                "Test",
                "User",
-               "StrongPassword123!"
+               "StrongPassword123!",
+                Guid.NewGuid()
            );
             var identityResult = IdentityResult.Failed(new IdentityError { Description = "Failed to create user." });
 

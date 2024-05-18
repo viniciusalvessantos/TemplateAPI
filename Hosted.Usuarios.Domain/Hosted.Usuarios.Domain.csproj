@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Host.Exceptions.Abstraction\Hosted.Exceptions.Abstraction.csproj" />
+    <ProjectReference Include="..\Hosted.Domain\Hosted.Domain.csproj" />
   </ItemGroup>
 
 </Project>

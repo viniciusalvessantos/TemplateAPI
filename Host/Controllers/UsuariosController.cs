@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hosted.Controllers {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuariosController : ControllerBase {
+    public class UsuariosController : BaseController {
         private readonly IMediator _mediator;
         public UsuariosController(IMediator mediator) {
             _mediator = mediator;

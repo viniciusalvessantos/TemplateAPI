@@ -46,10 +46,11 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseMiddleware<TenantMiddleware>();
 app.UseMiddleware<ExceptionLoggingMiddleware>();
 
 app.UseEndpoints(endpoints => {
-    endpoints.MapControllers();
+    _ = endpoints.MapControllers();
 });
 
 app.Run();

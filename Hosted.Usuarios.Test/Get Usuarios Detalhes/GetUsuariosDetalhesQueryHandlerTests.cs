@@ -23,7 +23,7 @@ namespace Hosted.Usuarios.Test.Get_Usuarios_Detalhes {
         public async Task Handle_UserExists_ReturnsUsuarioContract() {
             // Configuração do mock para retornar um usuário quando FindByIdAsync é chamado
             var userId = "user-id";
-            var expectedUser = new ApplicationUser("username", "name", "surname");
+            var expectedUser = new ApplicationUser("username", "name", "surname", Guid.NewGuid());
             _userManagerMock.Setup(x => x.FindByIdAsync(userId)).ReturnsAsync(expectedUser);
 
             // Act
