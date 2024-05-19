@@ -24,7 +24,7 @@ namespace Hosted.Usuarios.Infrastructure.Startup {
             });
             services.AddDbContext<UsuariosDbContext>(x => {
                 var connectionString = configuration["Modules:UsersModule:DbConnectionString"];
-                x.UseSqlServer(connectionString);
+                x.UseSqlServer(connectionString, sqlServerOptions => sqlServerOptions.EnableRetryOnFailure());
             });
             services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<UsuariosDbContext>();
