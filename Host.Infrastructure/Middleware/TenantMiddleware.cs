@@ -1,4 +1,6 @@
-﻿namespace Hosted.Configs {
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Hosted.Infrastructure.Middleware {
     public class TenantMiddleware {
         private readonly RequestDelegate _next;
 

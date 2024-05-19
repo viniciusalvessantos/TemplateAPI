@@ -1,4 +1,5 @@
-﻿using Hosted.Attributes;
+﻿
+using Hosted.Domain.Attributes;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -18,7 +19,7 @@ namespace Hosted.Configs {
 
             // Se não estiver no método, verificar no controlador
             if (requireTenantIdAttribute == null) {
-                requireTenantIdAttribute = context.MethodInfo.DeclaringType
+                requireTenantIdAttribute = context.MethodInfo.DeclaringType!
                     .GetCustomAttributes(true)
                     .OfType<RequireTenantIdAttribute>()
                     .FirstOrDefault();

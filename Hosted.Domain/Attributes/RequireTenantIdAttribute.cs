@@ -1,4 +1,4 @@
-﻿namespace Hosted.Attributes {
+﻿namespace Hosted.Domain.Attributes {
 
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
     public class RequireTenantIdAttribute : Attribute {

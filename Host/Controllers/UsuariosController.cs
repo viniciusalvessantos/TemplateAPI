@@ -36,6 +36,7 @@ namespace Hosted.Controllers {
         [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
+
         [Route("register")]
         public async Task<ActionResult> Register(RegisterUsuariosCommand request) =>
             Ok(await _mediator.Send(request));

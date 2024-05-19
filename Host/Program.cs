@@ -1,5 +1,6 @@
 using Hosted.Configs;
 using Hosted.Infrastructure.Exceptions;
+using Hosted.Infrastructure.Middleware;
 using Hosted.Outbox;
 using Hosted.OutBox.WorkerProcess;
 using Hosted.Usuarios.Infrastructure.Startup;
