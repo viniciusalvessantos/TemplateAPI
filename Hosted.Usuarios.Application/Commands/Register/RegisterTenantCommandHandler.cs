@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hosted.Usuarios.Application.Responses.TenantResponses;
+using MediatR;
 
 namespace Hosted.Usuarios.Application.Commands.Register {
-    internal class RegisterTenantCommandHandler {
+    public class RegisterTenantCommandHandler : IRequestHandler<RegisterTenantCommand, RegisterResponser> {
+
+
+
+        public Task<RegisterResponser> Handle(RegisterTenantCommand request, CancellationToken cancellationToken) {
+            throw new NotImplementedException();
+        }
     }
 }

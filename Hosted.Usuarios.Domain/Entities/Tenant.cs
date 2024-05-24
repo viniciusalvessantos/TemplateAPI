@@ -6,15 +6,15 @@ namespace Hosted.Usuarios.Domain.Entities {
         public Tenant() {
 
         }
-        public Tenant(string name, bool isActive, ICollection<ApplicationUser> users) {
+        public Tenant(string name, bool isActive, bool isAssinaturaActive) {
             Name = name;
             IsActive = isActive;
-            Users = users;
+            IsAssinaturaActive = isAssinaturaActive;
         }
 
         [MaxLength(60)]
         public string Name { get; } = string.Empty;
-        public bool IsAssinaturaActive { get; set; }
+        public bool IsAssinaturaActive { get; }
         public bool IsActive { get; }
 
         [MaxLength(10)]

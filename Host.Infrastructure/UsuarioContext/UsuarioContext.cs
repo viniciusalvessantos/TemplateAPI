@@ -11,7 +11,7 @@ namespace Hosted.Infrastructure.UsuarioContext {
             get {
                 if (_contextAccessor != null) {
                     if (_contextAccessor.HttpContext != null) {
-                        return _contextAccessor.HttpContext.User.Claims.First(x => x.Type == "UserId").Value;
+                        return _contextAccessor.HttpContext.User.Claims.First(x => x.Type == "X-User-ID").Value;
                     }
                 }
                 return string.Empty;
