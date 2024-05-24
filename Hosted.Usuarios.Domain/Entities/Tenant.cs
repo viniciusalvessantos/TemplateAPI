@@ -13,11 +13,11 @@ namespace Hosted.Usuarios.Domain.Entities {
         }
 
         [MaxLength(60)]
-        public string Name { get; } = string.Empty;
-        public bool IsAssinaturaActive { get; }
-        public bool IsActive { get; }
+        public string Name { get; private set; } = string.Empty;
+        public bool IsAssinaturaActive { get; private set; }
+        public bool IsActive { get; private set; }
 
         [MaxLength(10)]
-        public virtual ICollection<ApplicationUser> Users { get; } // Propriedade de navegação
+        public virtual ICollection<ApplicationUser> Users { get; private set; } // Propriedade de navegação
     }
 }
