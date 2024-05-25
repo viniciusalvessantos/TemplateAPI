@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hosted.Usuarios.Domain.Entities {
-    internal class UserModulos {
+namespace Hosted.Contracts.Tenant {
+    internal class TenantCreateIntegrationEvent {
     }
 }
