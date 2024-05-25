@@ -27,5 +27,11 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Get Tenant Detalhes\" />
+    <Folder Include="Login Usuarios\" />
+    <Folder Include="Registrar Tenant\" />
+  </ItemGroup>
+
 
 </Project>

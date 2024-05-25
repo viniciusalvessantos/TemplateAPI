@@ -26,17 +26,19 @@ namespace Hosted.Configs {
             }
 
             var isRequired = requireTenantIdAttribute?.IsRequired ?? false;
+            if (isRequired) {
+                operation.Parameters.Add(new OpenApiParameter {
+                    Name = "X-Tenant-ID",
+                    In = ParameterLocation.Header,
+                    Description = isRequired ? "Required Tenant ID" : "Optional Tenant ID",
+                    Required = isRequired,
+                    Schema = new OpenApiSchema {
+                        Type = "string",
+                        Default = new OpenApiString(isRequired ? string.Empty : "0") // Valor padrão
+                    }
+                });
+            }
 
-            operation.Parameters.Add(new OpenApiParameter {
-                Name = "X-Tenant-ID",
-                In = ParameterLocation.Header,
-                Description = isRequired ? "Required Tenant ID" : "Optional Tenant ID",
-                Required = isRequired,
-                Schema = new OpenApiSchema {
-                    Type = "string",
-                    Default = new OpenApiString(isRequired ? string.Empty : "0") // Valor padrão
-                }
-            });
         }
     }
 }

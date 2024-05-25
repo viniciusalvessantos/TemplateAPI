@@ -3,6 +3,8 @@ using Hosted.Usuarios.Application.Queries.GetUsuariosDetalhes;
 using Hosted.Usuarios.Contract;
 using Hosted.Usuarios.Domain.Entities;
 using Hosted.Usuarios.Domain.Interfaces;
+using Hosted.Usuarios.Domain.Repository;
+using Hosted.Usuarios.Infrastructure.Repository;
 using Hosted.Usuarios.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -20,7 +22,8 @@ namespace Hosted.Usuarios.Infrastructure.Startup {
             this IServiceCollection services, IConfiguration configuration) {
 
             services.AddMediatR(cfg => {
-                cfg.RegisterServicesFromAssembly(typeof(RegisterUsuariosCommand).Assembly); // Adiciona os handlers localizados no mesmo assembly que a classe Startup
+                cfg.RegisterServicesFromAssembly(typeof(RegisterUsuariosCommand).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RegisterTenantCommand).Assembly);// Adiciona os handlers localizados no mesmo assembly que a classe Startup
             });
             services.AddDbContext<UsuariosDbContext>(x => {
                 var connectionString = configuration["Modules:UsersModule:DbConnectionString"];
@@ -80,6 +83,7 @@ namespace Hosted.Usuarios.Infrastructure.Startup {
 
 
             services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<ITenantRepository, TenantRepository>();
 
             return services;
         }
