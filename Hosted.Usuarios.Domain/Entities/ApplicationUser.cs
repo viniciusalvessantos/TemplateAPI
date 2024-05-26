@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hosted.Usuarios.Domain.Entities {
     public class ApplicationUser : IdentityUser {
@@ -13,7 +14,7 @@ namespace Hosted.Usuarios.Domain.Entities {
         }
         public string Name { get; private set; }
         public string Surname { get; private set; }
-
+        [ForeignKey("Tenant")]
         public Guid? TenantId { get; private set; }
         public virtual Tenant Tenant { get; private set; }
 

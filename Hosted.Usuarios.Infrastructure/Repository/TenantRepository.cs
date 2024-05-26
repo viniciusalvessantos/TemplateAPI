@@ -42,9 +42,8 @@ namespace Hosted.Usuarios.Infrastructure.Repository {
                 throw new KeyNotFoundException($"Tenant with id {id} not found.");
             }
             // Update the propertie141s of the existing tenant
-            existingTenant.UpdateName(tenant.Name);
+            existingTenant.UpdateName(tenant.Nome);
             existingTenant.UpdateIsActive(tenant.IsActive);
-            existingTenant.UpdateIsAssinaturaActive(tenant.IsAssinaturaActive);
             // Update other properties as needed
 
             _dbContext.Tenants.Update(existingTenant);

@@ -1,16 +1,29 @@
 ﻿using Hosted.Usuarios.Application.Responses.TenantResponses;
 using MediatR;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hosted.Usuarios.Application.Commands.Register {
     public class RegisterTenantCommand : IRequest<RegisterResponser> {
-        public RegisterTenantCommand(string name, bool isActive, bool isAssinaturaActive) {
-            Name = name;
-            IsActive = isActive;
-            IsAssinaturaActive = isAssinaturaActive;
+
+
+        public RegisterTenantCommand(string nome, string telefone, string email, string cnpj) {
+            Nome = nome;
+            Telefone = telefone;
+            Email = email;
+            Cnpj = cnpj;
         }
-        public string Name { get; }
-        public bool IsActive { get; }
-        public bool IsAssinaturaActive { get; }
+
+        [MaxLength(60)]
+        public string Nome { get; private set; } = string.Empty;
+
+        [MaxLength(11)]
+        public string Telefone { get; private set; } = string.Empty;
+
+        [EmailAddress]
+        public string Email { get; private set; }
+        [MaxLength(14)]
+        public string Cnpj { get; private set; }
+
 
 
     }

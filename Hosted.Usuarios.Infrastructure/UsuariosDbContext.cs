@@ -8,20 +8,19 @@ namespace Hosted.Usuarios.Infrastructure {
         public UsuariosDbContext(DbContextOptions<UsuariosDbContext> options) : base(options) {
         }
         public DbSet<Tenant> Tenants { get; set; }
+        public DbSet<RedeTenant> RedeTenants { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Tenant>(entity => {
                 entity.HasKey(t => t.Id);
-                entity.Property(t => t.Name)
+                entity.Property(t => t.Nome)
                     .IsRequired()
                     .HasMaxLength(60);
 
                 entity.Property(t => t.IsActive)
                     .IsRequired();
 
-                entity.Property(t => t.IsAssinaturaActive)
-                    .IsRequired();
 
                 entity.HasMany(t => t.Users)
                     .WithOne(u => u.Tenant)
