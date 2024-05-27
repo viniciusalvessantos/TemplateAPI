@@ -70,6 +70,10 @@ namespace Hosted.Usuarios.Domain.Entities {
             IsActive = isActive;
         }
 
+        public void UpdateRede(Guid redeId) {
+            RedeId = redeId;
+        }
+
         public static Tenant New(string nome, string telefone, string email, string cnpj) {
             if (string.IsNullOrWhiteSpace(nome) && nome.Length > 60) {
                 throw new ArgumentException("Name is invalid.");

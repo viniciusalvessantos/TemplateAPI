@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Hosted.Usuarios.Domain.Entities {
     public class RedeTenant : BaseEntity {
 
-        public RedeTenant(string nome) {
+        private RedeTenant(string nome) {
             Nome = nome;
         }
 
@@ -16,5 +16,12 @@ namespace Hosted.Usuarios.Domain.Entities {
 
         [MaxLength(100)]
         public virtual ICollection<Tenant> Tenants { get; private set; } // Propriedade de navegação
+
+        public static RedeTenant New(string nome) {
+            if (string.IsNullOrWhiteSpace(nome) && nome.Length > 60) {
+                throw new ArgumentException("Name is invalid.");
+            }
+            return new RedeTenant(nome);
+        }
     }
 }
