@@ -10,6 +10,10 @@ namespace Hosted.Usuarios.Domain.Entities {
 
         public string Nome { get; private set; }
 
+        public void UpdateNome(string nome) {
+            Nome = nome;
+        }
+
         [MaxLength(100)]
         public virtual ICollection<Tenant> Tenants { get; private set; } // Propriedade de navegação
     }

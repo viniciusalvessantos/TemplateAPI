@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hosted.Usuarios.Domain.Entities;
 
 namespace Hosted.Usuarios.Domain.Repository {
-    internal interface IRedeTenantRepository {
+    public interface IRedeTenantRepository {
+        Task Add(RedeTenant redeTenant);
+        Task Update(Guid id, RedeTenant redeTenant);
+        Task Delete(Guid id);
+        Task<IEnumerable<RedeTenant>> GetAll();
+        Task<Tenant> Get(Guid id, CancellationToken cancellationToken);
+        Task CommitAsync();
     }
 }

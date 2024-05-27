@@ -21,7 +21,7 @@ namespace Hosted.Usuarios.Application.Queries.GetUsuariosDetalhes {
             if (user is null)
                 throw new NotFoundException(request.UserId, nameof(ApplicationUser));
 
-            return new UsuarioContract(user.UserName, user.Name, user.Surname);
+            return new UsuarioContract(user.UserName, user.Nome, user.SobreNome);
         }
     }
 }

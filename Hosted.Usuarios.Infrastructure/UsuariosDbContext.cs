@@ -28,6 +28,18 @@ namespace Hosted.Usuarios.Infrastructure {
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
+            modelBuilder.Entity<RedeTenant>(entity => {
+                entity.HasKey(t => t.Id);
+                entity.Property(t => t.Nome)
+                    .IsRequired()
+                    .HasMaxLength(60);
+
+                entity.HasMany(t => t.Tenants)
+                    .WithOne(tenant => tenant.RedeTenantTenant)
+                    .HasForeignKey(tenant => tenant.RedeId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
             modelBuilder.Entity<ApplicationUser>()
                 .HasOne(u => u.Tenant)
                 .WithMany(t => t.Users) // Assumindo que a entidade Tenant tem uma coleção de ApplicationUsers
