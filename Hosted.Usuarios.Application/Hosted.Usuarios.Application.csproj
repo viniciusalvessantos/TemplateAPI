@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Hosted.Usuarios.Domain\Hosted.Usuarios.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\Register\Redes\" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
-﻿using Hosted.Usuarios.Application.Commands.Register;
+﻿using Hosted.Usuarios.Application.Commands.Register.Tenants;
+using Hosted.Usuarios.Application.Commands.Register.Usuarios;
 using Hosted.Usuarios.Application.Queries.GetUsuariosDetalhes;
 using Hosted.Usuarios.Contract;
 using Hosted.Usuarios.Domain.Entities;
@@ -16,7 +17,8 @@ using Refit;
 using System.Text;
 
 
-namespace Hosted.Usuarios.Infrastructure.Startup {
+namespace Hosted.Usuarios.Infrastructure.Startup
+{
     public static class UsuariosModuleStartup {
         public static IServiceCollection AddUserModule(
             this IServiceCollection services, IConfiguration configuration) {

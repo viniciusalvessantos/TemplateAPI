@@ -2,11 +2,14 @@
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 
-namespace Hosted.Usuarios.Application.Commands.Register {
-    public class RegisterTenantCommand : IRequest<RegisterResponser> {
+namespace Hosted.Usuarios.Application.Commands.Register.Tenants
+{
+    public class RegisterTenantCommand : IRequest<RegisterResponser>
+    {
 
 
-        public RegisterTenantCommand(string nome, string telefone, string email, string cnpj) {
+        public RegisterTenantCommand(string nome, string telefone, string email, string cnpj)
+        {
             Nome = nome;
             Telefone = telefone;
             Email = email;
