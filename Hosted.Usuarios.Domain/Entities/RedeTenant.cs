@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Hosted.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hosted.Usuarios.Domain.Entities {
-    public class RedeTenant {
+    public class RedeTenant : BaseEntity {
 
         public RedeTenant(string nome) {
             Nome = nome;

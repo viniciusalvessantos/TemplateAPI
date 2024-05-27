@@ -40,9 +40,32 @@ namespace Hosted.Usuarios.Domain.Entities {
             if (!string.IsNullOrWhiteSpace(name) && name.Length <= 60) {
                 Nome = name;
             } else {
-                throw new ArgumentException("Name is invalid.");
+                throw new ArgumentException("Não e um nome Valido !!");
             }
         }
+        public void UpdateTelefone(string telefone) {
+            if (!string.IsNullOrWhiteSpace(telefone) && telefone.Length <= 11) {
+                Telefone = telefone;
+            } else {
+                throw new ArgumentException("Não e um telefone valido!!");
+            }
+        }
+        public void UpdateCnpj(string cnpj) {
+            if (!string.IsNullOrWhiteSpace(cnpj) && cnpj.Length <= 14) {
+                Cnpj = cnpj;
+            } else {
+                throw new ArgumentException("Não e um cnpj valido!!");
+            }
+        }
+        public void UpdateEmail(string email) {
+            if (!string.IsNullOrWhiteSpace(email)) {
+                Email = email;
+            } else {
+                throw new ArgumentException("Não e um email valido!!");
+            }
+        }
+
+
         public void UpdateIsActive(bool isActive) {
             IsActive = isActive;
         }

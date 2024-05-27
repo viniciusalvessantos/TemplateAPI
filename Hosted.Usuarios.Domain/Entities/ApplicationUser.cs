@@ -6,14 +6,18 @@ namespace Hosted.Usuarios.Domain.Entities {
 
         private ApplicationUser() {
         }
-        private ApplicationUser(string userName, string name, string surname, Guid tenantId) : base(userName) {
-            Name = name;
-            Surname = surname;
+        private ApplicationUser(string userName, string nome, string sobrenome, Guid tenantId) : base(userName) {
+            Nome = nome;
+            SobreNome = sobrenome;
             TenantId = tenantId;
-
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
+        public string Nome { get; private set; }
+        public string SobreNome { get; private set; }
+        public string Foto { get; private set; }
+
+
+
+
         [ForeignKey("Tenant")]
         public Guid? TenantId { get; private set; }
         public virtual Tenant Tenant { get; private set; }
