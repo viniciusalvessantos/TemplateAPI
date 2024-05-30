@@ -19,7 +19,7 @@ namespace Hosted.Usuarios.Domain.Entities {
 
         public static RedeTenant New(string nome) {
             if (string.IsNullOrWhiteSpace(nome) && nome.Length > 60) {
-                throw new ArgumentException("Name is invalid.");
+                throw new ArgumentException("Nome Invalido");
             }
             return new RedeTenant(nome);
         }

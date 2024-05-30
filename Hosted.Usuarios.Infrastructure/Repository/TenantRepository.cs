@@ -36,14 +36,14 @@ namespace Hosted.Usuarios.Infrastructure.Repository {
             return await _dbContext.Tenants.ToListAsync();
         }
 
-        public async Task Update(Guid id, Tenant tenant) {
+        public async Task Update(Guid id, string nome, string telefone, string email, string cnpj) {
             var existingTenant = await _dbContext.Tenants.FindAsync(id);
             if (existingTenant == null) {
                 throw new KeyNotFoundException($"Tenant with id {id} not found.");
             }
             // Update the propertie141s of the existing tenant
-            existingTenant.UpdateName(tenant.Nome);
-            existingTenant.UpdateIsActive(tenant.IsActive);
+            existingTenant.UpdateName(nome);
+            existingTenant.UpdateIsActive(true);
             // Update other properties as needed
 
             _dbContext.Tenants.Update(existingTenant);

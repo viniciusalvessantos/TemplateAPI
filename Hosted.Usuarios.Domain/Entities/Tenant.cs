@@ -44,14 +44,14 @@ namespace Hosted.Usuarios.Domain.Entities {
             }
         }
         public void UpdateTelefone(string telefone) {
-            if (!string.IsNullOrWhiteSpace(telefone) && telefone.Length <= 11) {
+            if (!string.IsNullOrWhiteSpace(telefone) && telefone.Length == 11) {
                 Telefone = telefone;
             } else {
                 throw new ArgumentException("Não e um telefone valido!!");
             }
         }
         public void UpdateCnpj(string cnpj) {
-            if (!string.IsNullOrWhiteSpace(cnpj) && cnpj.Length <= 14) {
+            if (!string.IsNullOrWhiteSpace(cnpj) && cnpj.Length == 14) {
                 Cnpj = cnpj;
             } else {
                 throw new ArgumentException("Não e um cnpj valido!!");
@@ -77,6 +77,12 @@ namespace Hosted.Usuarios.Domain.Entities {
         public static Tenant New(string nome, string telefone, string email, string cnpj) {
             if (string.IsNullOrWhiteSpace(nome) && nome.Length > 60) {
                 throw new ArgumentException("Name is invalid.");
+            }
+            if (string.IsNullOrWhiteSpace(telefone) && telefone.Length < 11) {
+                throw new ArgumentException("Telefone invalido");
+            }
+            if (string.IsNullOrWhiteSpace(cnpj) && cnpj.Length < 14) {
+                throw new ArgumentException("Cnpj Invalido.");
             }
             return new Tenant(nome, telefone, email, cnpj);
         }

@@ -21,6 +21,7 @@ namespace Hosted.Infrastructure.Persistence {
                     case EntityState.Added:
                         auditableEntity.Entity.CreatedDate = currentDate;
                         auditableEntity.Entity.ModifiedDate = currentDate;
+                        auditableEntity.Entity.Description = "Create";
                         auditableEntity.Entity.CreatedBy = userId;
                         auditableEntity.Entity.ModifiedBy = userId;
                         break;

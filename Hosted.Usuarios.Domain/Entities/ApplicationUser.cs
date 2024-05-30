@@ -30,6 +30,8 @@ namespace Hosted.Usuarios.Domain.Entities {
             TenantId = tenantId;
         }
 
+
+
         public virtual Tenant Tenant { get; private set; }
 
         public static ApplicationUser New(string userName, string name, string surname, Guid tenantId) {
