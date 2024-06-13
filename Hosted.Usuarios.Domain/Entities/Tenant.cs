@@ -75,13 +75,13 @@ namespace Hosted.Usuarios.Domain.Entities {
         }
 
         public static Tenant New(string nome, string telefone, string email, string cnpj) {
-            if (string.IsNullOrWhiteSpace(nome) && nome.Length > 60) {
+            if (nome.Length > 60) {
                 throw new ArgumentException("Name is invalid.");
             }
-            if (string.IsNullOrWhiteSpace(telefone) && telefone.Length < 11) {
+            if (telefone.Length < 11) {
                 throw new ArgumentException("Telefone invalido");
             }
-            if (string.IsNullOrWhiteSpace(cnpj) && cnpj.Length < 14) {
+            if (cnpj.Length < 14) {
                 throw new ArgumentException("Cnpj Invalido.");
             }
             return new Tenant(nome, telefone, email, cnpj);

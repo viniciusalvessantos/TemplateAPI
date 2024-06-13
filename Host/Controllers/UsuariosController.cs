@@ -5,8 +5,7 @@ using Hosted.Usuarios.Application.Responses.LoginResponses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Hosted.Controllers
-{
+namespace Hosted.Controllers {
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : BaseController {
@@ -37,7 +36,6 @@ namespace Hosted.Controllers
         [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
-        //[RequireTenantId(true)]
         [Route("register")]
         public async Task<ActionResult> Register(RegisterUsuariosCommand request) =>
             Ok(await _mediator.Send(request));

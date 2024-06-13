@@ -1,5 +1,6 @@
 ﻿using Hosted.Usuarios.Application.Responses.TenantResponses;
 using Hosted.Usuarios.Domain.Entities;
+using Hosted.Usuarios.Domain.Exceptions;
 using Hosted.Usuarios.Domain.Repository;
 using MediatR;
 
@@ -13,20 +14,15 @@ namespace Hosted.Usuarios.Application.Commands.Register.Tenants {
 
 
         public async Task<RegisterResponser> Handle(RegisterTenantCommand request, CancellationToken cancellationToken) {
-
-            var tenant = Tenant.New(request.Nome, request.Telefone, request.Email, request.Cnpj);
-            await _tenantRepository.Add(tenant);
-
             try {
-
+                var tenant = Tenant.New(request.Nome, request.Telefone, request.Email, request.Cnpj);
+                await _tenantRepository.Add(tenant);
                 await _tenantRepository.CommitAsync();
                 return new RegisterResponser(tenant.Id);
             } catch (Exception e) {
-                throw new Exception("Erro ao registrar");
+                // Registrar Logs
+                throw new RegisterTenantException();
             }
-
-
-
         }
     }
 }
