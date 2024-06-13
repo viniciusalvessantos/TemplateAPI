@@ -33,7 +33,7 @@ namespace Hosted.Usuarios.Application.Queries.Login {
             foreach (var role in roles) {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
-            if (!user.Tenant.IsActive && !user.Tenant.IsAssinaturaActive) {
+            if (!user.Tenant.IsActive) {
                 // Aqui vou adicionar os modulos para o usuarios
                 throw new LoginException();
             }

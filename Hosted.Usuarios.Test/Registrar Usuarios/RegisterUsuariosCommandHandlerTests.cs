@@ -1,10 +1,11 @@
-﻿using Hosted.Usuarios.Application.Commands.Register;
+﻿using Hosted.Usuarios.Application.Commands.Register.Usuarios;
 using Hosted.Usuarios.Domain.Entities;
 using Hosted.Usuarios.Domain.Exceptions;
 using Microsoft.AspNetCore.Identity;
 using Moq;
 
-namespace Hosted.Usuarios.Test.Registrar_Usuarios {
+namespace Hosted.Usuarios.Test.Registrar_Usuarios
+{
     [TestFixture]
     public class RegisterUsuariosCommandHandlerTests {
         private Mock<UserManager<ApplicationUser>> _userManagerMock;

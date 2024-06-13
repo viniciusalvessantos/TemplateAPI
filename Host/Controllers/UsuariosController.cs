@@ -1,5 +1,5 @@
 ﻿using Hosted.Infrastructure.Exceptions;
-using Hosted.Usuarios.Application.Commands.Register;
+using Hosted.Usuarios.Application.Commands.Register.Usuarios;
 using Hosted.Usuarios.Application.Queries.Login;
 using Hosted.Usuarios.Application.Responses.LoginResponses;
 using MediatR;
@@ -36,7 +36,6 @@ namespace Hosted.Controllers {
         [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
-
         [Route("register")]
         public async Task<ActionResult> Register(RegisterUsuariosCommand request) =>
             Ok(await _mediator.Send(request));

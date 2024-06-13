@@ -1,0 +1,8 @@
+
+Nesse modulo vou integrar os serviços: Whatsapp, Ifood, e outros sistemas par adelivere.
+Nesse modulo terar as seguintes funções: 
+Atendimento ao cliente via Whatsapp.
+Atendimento ao cliente Garçon
+Gerencimento de pedidos feitos via: Whatsapp, Garço, Ifood e  outros serviços de delivery
+Cardapio Online 
+Pagamento Online  

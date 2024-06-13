@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Hosted.Usuarios.Domain.Entities.ApplicationUser">
+    <Position X="0.75" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAgQAEEAAA=</HashCode>
+      <FileName>Entities\ApplicationUser.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tenant" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Hosted.Usuarios.Domain.Entities.RedeTenant">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Entities\RedeTenant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hosted.Usuarios.Domain.Entities.Tenant">
+    <Position X="5.75" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAICCAgCAAACAAEAAAMAAAAAAAAASAAAAAAAEAAAQ=</HashCode>
+      <FileName>Entities\Tenant.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RedeTenantTenant" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

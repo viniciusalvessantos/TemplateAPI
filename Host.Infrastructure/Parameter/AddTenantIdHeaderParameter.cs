@@ -37,6 +37,17 @@ namespace Hosted.Configs {
                         Default = new OpenApiString(isRequired ? string.Empty : "0") // Valor padrão
                     }
                 });
+            } else if (!isRequired && requireTenantIdAttribute != null) {
+                operation.Parameters.Add(new OpenApiParameter {
+                    Name = "X-Tenant-ID",
+                    In = ParameterLocation.Header,
+                    Description = isRequired ? "Required Tenant ID" : "Optional Tenant ID",
+                    Required = false,
+                    Schema = new OpenApiSchema {
+                        Type = "string",
+                        Default = new OpenApiString(isRequired ? string.Empty : "0") // Valor padrão
+                    }
+                });
             }
 
         }

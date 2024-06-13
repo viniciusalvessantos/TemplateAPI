@@ -11,6 +11,15 @@ namespace Hosted.Infrastructure.Persistence {
         protected BaseDbContext(DbContextOptions options) : base(options) {
 
         }
+        public override int SaveChanges() {
+            SetAuditFields();
+            return base.SaveChanges();
+        }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) {
+            SetAuditFields();
+            return await base.SaveChangesAsync(cancellationToken);
+        }
         protected void SetAuditFields() {
             var changedEntities = ChangeTracker.Entries<BaseEntity>()
                 .Where(ce => ce.State is EntityState.Added or EntityState.Modified);
@@ -21,6 +30,7 @@ namespace Hosted.Infrastructure.Persistence {
                     case EntityState.Added:
                         auditableEntity.Entity.CreatedDate = currentDate;
                         auditableEntity.Entity.ModifiedDate = currentDate;
+                        auditableEntity.Entity.Description = "Create";
                         auditableEntity.Entity.CreatedBy = userId;
                         auditableEntity.Entity.ModifiedBy = userId;
                         break;
